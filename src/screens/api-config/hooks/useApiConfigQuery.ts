@@ -11,9 +11,7 @@ export const useApiConfigQuery = () => {
             const body: IApiResponse<IApiConfig> = res.data;
 
             if (!body.success) {
-                throw new Error(
-                    body.error || body.message || "Failed to load API config",
-                );
+                throw new Error(body.error || body.message || "Failed to load API config",);
             }
 
             return body.data;
