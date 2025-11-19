@@ -13,29 +13,29 @@ If you are developing a production application, we recommend updating the config
 
 ```js
 export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+    globalIgnores(['dist']),
+    {
+        files: ['**/*.{ts,tsx}'],
+        extends: [
+            // Other configs...
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+            // Remove tseslint.configs.recommended and replace with this
+            ...tseslint.configs.recommendedTypeChecked,
+            // Alternatively, use this for stricter rules
+            ...tseslint.configs.strictTypeChecked,
+            // Optionally, add this for stylistic rules
+            ...tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
+            // Other configs...
+        ],
+        languageOptions: {
+            parserOptions: {
+                project: ['./tsconfig.node.json', './tsconfig.app.json'],
+                tsconfigRootDir: import.meta.dirname,
+            },
+            // other options...
+        },
     },
-  },
 ])
 ```
 
@@ -47,23 +47,46 @@ import reactX from 'eslint-plugin-react-x'
 import reactDom from 'eslint-plugin-react-dom'
 
 export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
+    globalIgnores(['dist']),
+    {
+        files: ['**/*.{ts,tsx}'],
+        extends: [
+            // Other configs...
+            // Enable lint rules for React
+            reactX.configs['recommended-typescript'],
+            // Enable lint rules for React DOM
+            reactDom.configs.recommended,
+        ],
+        languageOptions: {
+            parserOptions: {
+                project: ['./tsconfig.node.json', './tsconfig.app.json'],
+                tsconfigRootDir: import.meta.dirname,
+            },
+            // other options...
+        },
     },
-  },
 ])
 ```
+
+## How to Run the Project
+
+Follow these steps to set up and run the project locally:
+
+### Clone the repository
+```bash
+git clone https://github.com/oket23/React_Vite_Template
+cd react_app # Or your project's root directory
+```
+
+### Install dependencies
+Make sure you have Node.js (v18 or higher) installed.
+Then run:
+```bash
+npm install
+```
+
+### Start the development server
+```bash
+npm run dev
+```
+Once it’s running, open your browser and visit the local URL provided in your terminal (usually http://localhost:5173/).
