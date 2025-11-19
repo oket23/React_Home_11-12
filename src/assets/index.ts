@@ -1,0 +1,1 @@
+export {default as DeleteSvg} from '@/assets/icon/delete2.tsx'
