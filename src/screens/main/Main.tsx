@@ -6,7 +6,7 @@ import {useState} from "react";
 import {DeleteSvg} from "@/assets";
 import useModal from "@/hooks/useModal/useModal.tsx";
 import TodoCreationModal from "@/screens/main/features/todo-creation-modal/TodoCreationModal.tsx";
-import {useChangeStatusTodo} from "@/hooks/todos/useTodoMutation.ts";
+import {useChangeStatusTodo, useDeleteTodo} from "@/hooks/todos/useTodoMutation.ts";
 import type {TodoStatus} from "@/types/todo.type.ts";
 import StatusSelect from "@/screens/main/components/status-select/StatusSelect.tsx";
 
@@ -16,10 +16,15 @@ const Main = () => {
 
     const modalTodo = useModal();
     const changeStatusMutation = useChangeStatusTodo();
+    const deleteTodoMutation = useDeleteTodo();
 
     const handleStatusChange = (id: string, status: TodoStatus) => {
         changeStatusMutation.mutate({id, status});
     };
+
+    const handleDelete = (id: string) => {
+        deleteTodoMutation.mutate(id);
+    }
 
     if (isLoading) {
         return (
@@ -134,6 +139,7 @@ const Main = () => {
                                         <button
                                             type="button"
                                             className="inline-flex items-center gap-1.5 rounded-full border border-red-500/60 bg-red-500/5 px-3 py-1.5 font-medium text-red-300 transition-colors hover:bg-red-500/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                                            onClick={() => handleDelete(todo.id)}
                                         >
                                             <DeleteSvg className="h-3 w-3"/>
                                             Видалити

@@ -17,9 +17,7 @@ export const useLoginMutation = () => {
             const body: IApiResponse<IAuth> = res.data;
 
             if (!body.success) {
-                throw new Error(
-                    body.error || body.message || "Login failed",
-                );
+                throw new Error(body.error || body.message || "Login failed");
             }
 
             return body.data;

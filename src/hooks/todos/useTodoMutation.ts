@@ -39,3 +39,15 @@ export const useChangeStatusTodo = () => {
         }
     })
 }
+
+export const useDeleteTodo = () => {
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationKey: ['deleteTodo'],
+        mutationFn: (id: string) =>
+            TodoService.deleteTodo(id),
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({queryKey: ['todos']})
+        }
+    })
+}

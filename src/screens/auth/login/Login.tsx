@@ -3,6 +3,7 @@ import type { ILogin_Data } from "@/screens/auth/login/types/ILogin.ts";
 import { useLoginMutation } from "@/screens/auth/login/hooks/useLoginMutation.ts";
 import { Link } from "react-router";
 import { RouterEnum } from "@/config/RouterEnum.ts";
+import type {IApiErrorResponse} from "@/types/api-response.ts";
 
 const Login = () => {
     const {
@@ -25,11 +26,13 @@ const Login = () => {
         try {
             await mutateAsyncLogin({ data });
             reset();
-        } catch (e) {
-            const err = e as Error;
+        }
+        catch (e: unknown) {
+            const error = e as IApiErrorResponse;
+
             setError("root.serverError", {
                 type: "server",
-                message: err.message || "Не вдалося виконати вхід",
+                message: error?.error || "Не вдалося виконати вхід",
             });
         }
     };

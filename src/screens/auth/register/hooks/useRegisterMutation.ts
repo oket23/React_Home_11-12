@@ -17,9 +17,7 @@ export const useRegisterMutation = () => {
             const body: IApiResponse<IAuth> = res.data;
 
             if (!body.success) {
-                throw new Error(
-                    body.error || body.message || "Register failed",
-                );
+                throw new Error(body.error || body.message || "Register failed");
             }
 
             return body.data;

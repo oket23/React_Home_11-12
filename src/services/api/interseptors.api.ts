@@ -37,7 +37,7 @@ instance.interceptors.response.use(
         const url: string = originalRequest?.url;
 
         const isAuthRoute = url?.includes(postLoginUrl()) || url?.includes(postRegisterUrl()) || url?.includes(postRegisterUrl());
-        console.log(isAuthRoute);
+
         if (status === 401 && isAuthRoute) {
             throw error.response?.data || error;
         }

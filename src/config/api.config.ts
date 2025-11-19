@@ -7,10 +7,13 @@ export const postAccessTokenUrl = () => 'auth/refresh';
 export const postRegisterUrl = () => 'auth/register';
 export const getProfileUrl = () => 'auth/profile';
 
-//api
+//todo
 export const getTodoList = () => '/todos';
 export const getTodo = (id: string) => `/todos/${id}`;
 export const postCreateTodo = () => '/todos'
 export const putEditTodo = (id: string) => `/todos/${id}`;
 export const changeStatusTodo = (id: string) => `/todos/${id}/status`;
+export const deleteTodo = (id: string) => `/todos/${id}`;
+
+//apiconfig
 export const getApiDate = () => '';

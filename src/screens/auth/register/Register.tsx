@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { RouterEnum } from "@/config/RouterEnum.ts";
 import type {IRegister_data, IRegisterFormData,} from "@/screens/auth/register/types/IRegister.ts";
 import { useRegisterMutation } from "@/screens/auth/register/hooks/useRegisterMutation.ts";
+import type {IApiErrorResponse} from "@/types/api-response.ts";
 
 const Register = () => {
     const {register, handleSubmit, reset, watch, formState: { errors }, setError, clearErrors, } = useForm<IRegisterFormData>();
@@ -18,11 +19,13 @@ const Register = () => {
             const { confirmPassword, ...payload } = data;
             await mutateAsyncRegister({ data: payload as IRegister_data });
             reset();
-        } catch (e) {
-            const err = e as Error;
+        }
+        catch (e: unknown) {
+            const error = e as IApiErrorResponse;
+
             setError("root.serverError", {
                 type: "server",
-                message: err.message || "Не вдалося створити обліковий запис. Спробуйте ще раз пізніше.",
+                message: error?.error || "Не вдалося створити обліковий запис. Спробуйте ще раз пізніше.",
             });
         }
     };

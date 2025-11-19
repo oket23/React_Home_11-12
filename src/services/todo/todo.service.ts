@@ -1,5 +1,5 @@
 import instance from "@/services/api/interseptors.api.ts";
-import {changeStatusTodo, getTodo, getTodoList, postCreateTodo, putEditTodo} from "@/config/api.config.ts";
+import {changeStatusTodo, deleteTodo, getTodo, getTodoList, postCreateTodo, putEditTodo} from "@/config/api.config.ts";
 import type {TodoFormData, TodoStatus, TodoUpdateFormData} from "@/types/todo.type.ts";
 
 
@@ -32,4 +32,9 @@ export const TodoService = {
             url: changeStatusTodo(id),
             data: {status},
         }),
+    deleteTodo: (id: string) =>
+        instance({
+            url: deleteTodo(id),
+            method: "DELETE",
+        })
 }
