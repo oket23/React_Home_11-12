@@ -7,13 +7,7 @@ import { useCreateTodoMutation } from "@/hooks/todos/useTodoMutation.ts";
 import StatusSelect from "@/screens/main/components/status-select/StatusSelect.tsx";
 
 const TodoCreationModal: FC<ModalProps> = (props) => {
-    const {
-        register,
-        handleSubmit,
-        control,
-        formState: { errors },
-        reset
-    } = useForm<TodoFormData>({
+    const { register, handleSubmit, control, formState: { errors }, reset } = useForm<TodoFormData>({
         defaultValues: {
             title: "",
             description: "",
@@ -32,7 +26,8 @@ const TodoCreationModal: FC<ModalProps> = (props) => {
     return (
         <Modal
             {...props}
-            className="mx-auto w-full max-w-md max-h-[80vh] overflow-hidden rounded-3xl border border-white/10 bg-slate-950/95 shadow-2xl shadow-sky-900/70 backdrop-blur-2xl"
+            className="mx-auto w-full max-w-md max-h-[80vh] overflow-hidden rounded-3xl
+                       border border-white/10 bg-slate-950/95 shadow-2xl shadow-sky-900/70"
         >
             <Modal.Title
                 onClose={props.onClose}

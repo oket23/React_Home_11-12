@@ -1,12 +1,4 @@
-export interface IUser {
-    id: string;
-    email: string;
-    firstName: string;
-    lastName: string;
-    phoneNumber: string;
-    createdAt: string;
-    updatedAt: string;
-}
+import type {IUser} from "@/types/user.types.ts";
 
 export interface IRefresh {
     accessToken: string;

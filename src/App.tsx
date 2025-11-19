@@ -17,6 +17,10 @@ export default function App() {
         {path: RouterEnum.REGISTER, element: <Register/>},
     ];
 
+    if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "manual";
+    }
+
     return (
         <Providers>
             <Layout>
@@ -30,5 +34,4 @@ export default function App() {
     );
 }
 
-// Розібратися з запитами до туду з ауг токен
 // Зробити іконку користувача, там вивести дані профіля та кнопку розлогінитися
